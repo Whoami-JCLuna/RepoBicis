@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,54 +12,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Lavishly+Yours&display=swap" rel="stylesheet">
     <title>Tienda de Bicis</title>
 </head>
+
 <body>
     <nav id="menu">
         <div class="centrar">
-        <img src="./resources/logoBicis.png" alt="Logo Tienda de Bicis">
+            <img src="./resources/logoBicis.png" alt="Logo Tienda de Bicis">
         </div>
         <ul>
-            <li><a href="#historia">Historia</a></li>
-            <li><a href="#curiosidades">Curiosidades</a></li>
-            <li><a href="#cultura">Cultura</a></li>
-            <li><a href="#comunidad">Comunidad</a></li>
+            <li><a href="#texto-contenedor">STORE</a></li>
+            <li><a href="#construccion-contenedor">MODELOS</a></li>
+            <li><a href="#cards">CURIOSIDADES</a></li>
+            <li><a href="#customizacion">CUSTOMIZACIÓN</a></li>
+            <li><a href="#comunidad">COMUNIDAD</a></li>
+            <li><a href="#contacto">CONTACTO</a></li>
         </ul>
-  
-        <div class="iconos izquierda"> 
+        <div class="iconos izquierda">
             <i class="fa-solid fa-magnifying-glass"></i>
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
-        
     </nav>
     
-    <div id="menubarinfo" class="centrar" > 
+    <div id="menubarinfo" class="centrar">
         <p><strong>Teléfono:</strong> +34 123 456 789</p>
         <p><strong>Correo:</strong> contacto@bicicletavintage.com</p>
         <p><strong>Dirección:</strong> Calle de las Bicicletas, 123, Ciudad, País</p>
         <p><strong>Horario:</strong> Lunes a Viernes: 9:00 - 18:00</p>
     </div>
-    
-   
-    <!-- HEADER  -->
+
+    <!-- HEADER -->
     <header>
         <div class="contenido-header">
-        <h1>Lo vintage nunca pasa de moda</h1>
-        <p>CADA BICICLETA, UNA OBRA DE ARTE</p>
-        <p>DISEÑO VINTAGE, PASIÓN MODERNA, LISTO PARA RODAR</p>
-        <button> NUESTRA HISTORIA</button>
+            <h1>Lo vintage nunca pasa de moda</h1>
+            <p>CADA BICICLETA, UNA OBRA DE ARTE</p>
+            <p>DISEÑO VINTAGE, PASIÓN MODERNA, LISTO PARA RODAR</p>
+            <button>NUESTRA HISTORIA</button>
         </div>
     </header>
 
-
-
-
     <!-- CONTENT -->
     <main class="contenedor">
-        <div class="texto-contenedor centrar">
-        <p id="p1-texto-contenedor">Bicicletas con alma, para quienes valoran la autenticidad<p>
-        <p> El arte de diseñar y crear bicicletas vintage es <span> dar vida a la elegancia del pasado</span>, fusionando estilo <span>clásico</span> con pasión y <span>funcionalidad</span> moderna </p>
-        <button>STORE</button>
-    </div>
+        <div class="texto-contenedor centrar" id="texto-contenedor">
+            <p id="p1-texto-contenedor">Bicicletas con alma, para quienes valoran la autenticidad</p>
+            <p> El arte de diseñar y crear bicicletas vintage es <span>dar vida a la elegancia del pasado</span> fusionando estilo <span>clásico</span> con pasión y <span>funcionalidad</span> moderna.</p>
+            <button>STORE</button>
+        </div>
+        
         <div class="elementos centrar">
             <div class="elemento">
                 <i class="fa-solid fa-bicycle"></i>
@@ -70,60 +69,65 @@
             </div>
             <div class="elemento">
                 <i class="fa-brands fa-pagelines"></i>
-                <p>Ecologica</p>
+                <p>Ecológica</p>
             </div>
         </div>
 
-        <div class="img-contenedor centrar">
-            <p>AQWEIUBASD</p>
-            <p>ajksdasdakjsd</p>
-            <button>Descubre más</button>
+        <!-- DETALLE DE CONSTRUCCION DE LAS BICIS -->
+        <div class="construccion-contenedor" id="construccion-contenedor">
+            <div class="construccion-contenedor-in centrar">
+                <h2>Quality</h2>
+                <p>Nuestras bicicletas vintage combinan <br> artesanía excepcional con elegancia atemporal, <br> ofreciendo una experiencia única tanto en <br> estilo como en rendimiento.</p>
+                <button>MODELOS</button>
+            </div>
         </div>
 
-        <div class="contenedor-cards centrar">
+        <div class="contenedor-cards centrar" id="cards">
             <div class="card" id="card1">
-                <p>Nombre de la bicicleta</p>
+                <p>BICICLETAS DECORACIÓN</p>
+                
             </div>
             <div class="card" id="card2">
-                <img src="img/bici2.jpg" alt="">
-                <p>Nombre de la bicicleta</p>
+                <p>URBAN VINTAGE</p>
             </div>
             <div class="card" id="card3">
-                <img src="img/bici2.jpg" alt="">
-                <p>Nombre de la bicicleta</p>
+                <p>INNOVACIÓN</p>
             </div>
             <div class="card" id="card4">
-                <img src="img/bici2.jpg" alt="">
-                <p>Nombre de la bicicleta</p>
+                <p>RESTAURACIÓN</p>
             </div>
         </div>
 
-        <div class="contenedor-custom">
-            <h2>CUSTOMIZACIÓN</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Fugit tenetur magni non velit consequatur repellat sed deserunt 
-            voluptate molestias ullam dolor voluptas veniam enim quasi ab 
-            error adipisci, neque optio!</p>
+        <!-- CUSTOM CONTENEDOR -->
+        <div class="contenedor-custom" id="customizacion">
+            <div class="contenedor-custom-in izquierda">
+                <h2>Customización</h2>
+                <p>Un arte que combina diseño único y autenticidad <br> transformando cada pieza en una obra que revive el encanto del pasado con estilo propio.</p>
+                <button>Descubre más</button>
+            </div>
         </div>
 
-        <div class="contenedor-opiniones">
+        <div class="contenedor-opiniones" id="comunidad">
             <span class="dots">...</span>
             <div class="opiniones centrar">
                 <img src="./resources/img/usuarios/pexels-olly-774909.jpg" alt="">
-                <p><strong>¡Estoy encantado con mi bicicleta vintage comprada en esta web!</strong><br>
-                    La calidad es impresionante, 
-                    y cada detalle de la bici refleja la auténtica esencia de lo clásico. <br>
-                    Además, la entrega fue rápida y el servicio al cliente excepcional. <br>
-                    ¡Definitivamente volveré a comprar más!" .- <strong> Maria Alonso</strong></p>
-                    
+                <p><strong>¡Estoy encantado con mi bicicleta vintage comprada en esta web!</strong><br> La calidad es impresionante, y cada detalle de la bici refleja la auténtica esencia de lo clásico. <br> Además, la entrega fue rápida y el servicio al cliente excepcional. <br> ¡Definitivamente volveré a comprar más!" .- <strong>Maria Alonso</strong></p>
             </div>
-            
+        </div>
+
+        <div class="formulario-contacto" id="contacto">
+            <div class="formulario-contacto-in">
+                <h3>Contáctanos</h3>
+                <form action="#" method="POST">
+                    <input type="text" name="nombre" placeholder="Nombre" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+                    <button>ENVIAR</button>
+                </form>
+            </div>
         </div>
 
     </main>
-    
-
-
 
     <!-- FOOTER -->
     <footer>
@@ -158,4 +162,5 @@
         </div>
     </footer>
 </body>
+
 </html>

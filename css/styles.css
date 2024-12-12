@@ -1,10 +1,15 @@
 :root {
-    --primario: #0EC1BF;  /* Aqua claro */
-    --secundario: #137c7a; /* Aqua oscuro */
-    --fondo: #F2809F;      /* Verde azulado */
-    --texto: #F2EFBD;      /* Verde oscuro */
-    --pie: #D9961A;        /* Oscuro */
-    --blanco: white; 
+    --primario: #0EC1BF;
+    /* Aqua claro */
+    --secundario: #137c7a;
+    /* Aqua oscuro */
+    --fondo: #F2809F;
+    /* Verde azulado */
+    --texto: #F2EFBD;
+    /* Verde oscuro */
+    --pie: #D9961A;
+    /* Oscuro */
+    --blanco: white;
     --negro: black;
 }
 
@@ -13,36 +18,82 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 /* CLASES GENÉRICAS */
-.centrar{
+
+button {
+    background-color: var(--pie);
+    border: 1px solid transparent;
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 50px;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 4px 4px 10px rgba(253, 253, 253, 0.048);
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: white;
+    border-color: var(--pie);
+    color: var(--pie);
+    transform: scale(1.05);
+}
+
+button:focus {
+    outline: none;
+    border: 2px solid var(--pie);
+}
+
+
+
+
+
+
+
+.centrar {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 
-.derecha{
+.derecha {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
 }
 
-.izquierda{
+.derecha-superior-column {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.izquierda {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 }
 
-.iconos{
+.izquierda-superior-column {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.iconos {
     font-size: 1.5em;
     gap: 1em;
 }
 
-span{
+span {
     color: var(--secundario);
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 
@@ -52,8 +103,8 @@ span{
 body {
     font-family: Arial, sans-serif;
     display: grid;
-    grid-template-columns: 1fr; /* Una sola columna */
-    grid-template-rows: 80px auto auto auto; /* Cabecera, menú, contenido, pie */
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px auto auto auto;
     grid-template-areas:
         "menu"
         "menubarinfo"
@@ -73,26 +124,56 @@ body {
 /* MENU */
 #menu {
     grid-area: menu;
-    background-color: var(--texto); /* Fondo negro con transparencia */
+    background-color: var(--texto);
     display: grid;
     grid-template-columns: 2fr 6fr 2fr;
     grid-template-rows: 2fr;
-    font-weight: 900;
-    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    font-weight: 600;
+    width: 100%;
+    position: sticky; 
+    z-index: 500;
+    top: 0;
+    transition: height 0.5s ease, background-color 0.5s ease; 
+    &:hover {
+        background-color: var(--secundario);
+        transform: scale(1.00); 
+        
+    }
+
+    animation: fadeIn 0.5s ease-in-out;
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
 }
+
+
 
 #menu img {
     width: 130px;
     justify-self: center;
 }
 
+#menu ul li:hover {
+    opacity: 1;
+  }
+
 #menu ul {
     display: flex;
     justify-content: center;
     align-items: center;
     list-style: none;
-    gap: 20px;
+    gap: 40px;
 }
+
 #menu li {
     margin: 0 10px;
 }
@@ -101,21 +182,51 @@ body {
     color: var(--pie);
     text-decoration: none;
     font-size: 1.2rem;
-    transition: color 0.3s; /* Animación para un cambio suave de color */
+    transition: color 0.3s ease;
 }
 
 #menu a:hover {
-    color: var(--azul); /* Cambiamos el color al pasar el ratón */
+    transform: scale(1.1);
+    color: var(--blanco);
 }
 
- #menubarinfo{
+#menubarinfo {
     grid-area: menubarinfo;
     width: 100%;
     height: 2rem;
     background-color: var(--pie);
     color: var(--blanco);
     gap: 3rem;
+    position: sticky;
+    top: 80px; 
+    z-index: 200;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    padding: 10px 0; 
+    text-align: center;
 }
+
+#menubarinfo p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+#menubarinfo p strong {
+    font-weight: bold;
+}
+
+/* Al hacer scroll, cambiamos la altura del menú */
+#menu.scrolled {
+    height: 4rem;  /* Aumentamos la altura del menú cuando se hace scroll */
+    background-color: var(--texto);
+}
+
+#menu .iconos i {
+    transition: transform 0.3s ease;
+}
+
+
+
+/* FIN MENU */
 
 
 
@@ -140,48 +251,36 @@ header {
     background-position: center;
     box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.9);
     height: 880px;
-    display: grid;;
+    display: grid;
+    ;
 }
 
-.contenido-header{
+.contenido-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--blanco);
     margin-top: 3rem;
-    font-family:monospace;
+    font-family: monospace;
     font-size: 1.4rem;
 }
-.contenido-header p{
+
+.contenido-header p {
     margin: 15px;
 }
-.contenido-header h1{
+
+.contenido-header h1 {
     font-family: 'Lavishly Yours';
     font-size: 5rem;
     font-weight: 500;
 }
 
-button{
-    background-color: var(--fondo);
-    border: 1px solid transparent;
-    color: white;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    font-weight: 800;
-    border-radius: 2px;
-    margin-top: 10px;
-    cursor: pointer;
-    box-shadow: 4px 4px 10px rgba(253, 253, 253, 0.048); /* Desplazamiento en x, desplazamiento en y, difusa, color */
-
-}
 
 .contenido-header button:hover {
     box-shadow: 4px 4px 15px rgba(255, 255, 255, 0.5);
 }
 
-
 /* FIN HEADER */
-
 
 
 
@@ -191,77 +290,115 @@ button{
 .contenedor {
     grid-area: content;
     display: grid;
-    grid-template-columns: repeat(3,2fr);
-    grid-template-rows: 2fr 2fr 6fr 4fr 6fr 4fr;
-    gap: 1rem;
-    margin: 3rem;
+    grid-template-columns: repeat(3, 2fr);
+    grid-template-rows: 2fr 2fr 6fr 4fr 6fr 4fr 4fr;
+    gap: 3rem;
+    margin: 10rem;
 }
-.texto-contenedor{
+
+.texto-contenedor {
     grid-area: 1/2;
     text-align: center;
     flex-direction: column;
     gap: 1rem;
-    font-size: 2rem;
-    font-family: 'Amatic SC', sans-serif;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-family:monospace;
+    font-weight: 300;
+    scroll-margin-top: 300px;
+
 }
-#p1-texto-contenedor{
-    font-weight:900;
-    font-size: 2.5rem;
+
+#p1-texto-contenedor {
+    font-weight: 400;
+    font-size: 4rem;
+    font-family: 'Lavishly Yours';
+    text-decoration: underline;
+    color: #137c7a;
 }
 
 
-.elementos{
+/* ICONOS */
+.elementos {
     width: 100%;
-    grid-area: 2/2; 
-}
-.elemento {
-    padding: 3rem 7rem;
+    grid-area: 2/2;
 }
 
-.elemento i{
-    font-size: 3rem;
-    margin: 1rem;
-    color:#0EC1BF;
+.elemento {
+    padding: 0 4rem;
 }
-.elemento p{
+
+.elemento i {
+    font-size: 3rem;
+    margin: 1.2rem;
+    color: #0EC1BF;
+   
+}
+
+.elemento p {
     text-align: center;
     font-size: 1.3rem;
-    font-weight: 550;
-    color:#0EC1BF;
+    font-weight: 500;
+    color: #0EC1BF;
 
 }
 
 
-
-.img-contenedor{
+/* CONTRUCCION-CONTENEDOR  = MODELOS EN EL MENÚ*/
+.construccion-contenedor { 
     grid-column: 1/4;
-    grid-row: 3;  /* en la fila 3 desde la columa 1 a la 3 es lo q le digo con esto y lo de arriba*/
+    grid-row: 3;
     background-image: url(../resources/img/fondos/close-up-bicycle-details-parts.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    flex-direction: column;
     gap: 1rem;
+    font-family: monospace;
+    scroll-margin-top: 90px;
+}
+
+.construccion-contenedor-in {
     color: white;
-    font-size: 2rem;
-    font-family: 'Amatic SC', sans-serif;
-    font-weight: 700;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    margin: auto auto 0 10rem;
+    width: 600px;
+    height: 800px;
+    overflow: hidden;
+    background-color: rgba(13, 124, 124, 0.5);
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.construccion-contenedor-in h2 {
+    font-size: 5rem;
+    font-weight: 400;
+    font-family: 'Lavishly Yours';
+    margin: 0 2rem;
+}
+
+.construccion-contenedor-in p {
+    font-size: 1.1rem;
     text-align: center;
-    padding: 1rem;
+    margin: 1rem 0 0 2rem;
+}
+
+.construccion-contenedor-in button {
+    margin: 2rem;
 }
 
 
 
 
 /* CARDAS CONTENEDOR */
-.contenedor-cards{
+.contenedor-cards {
     grid-column: 1/4;
-    grid-row: 4; 
-    gap: 1rem;   
+    grid-row: 4;
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    scroll-margin-top: 240px;
 }
-.card{
+
+.card {
     width: 100%;
     height: 100%;
     background-color: rgb(63, 123, 175);
@@ -272,69 +409,223 @@ button{
     font-size: 2rem;
     font-family: 'Amatic SC', sans-serif;
     font-weight: 700;
-    position:relative;
+    position: relative;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
-#card1{
-    background-image: url(../resources/img/fondos/doina-gavrilov-nQTjNppKNQI-unsplash.jpg);  
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
-#card2{
-    background-image: url(../resources/img/fondos/portrait-young-man-with-tattoo-his-hand-standing-with-bicycle-wall.jpg);  
+
+.card p {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
-#card3{
-    background-image: url(../resources/img/fondos/eduardo-escobar-6ZV9Z4Z8ZL0-unsplash.jpg);  
+
+.card:hover::before {
+    opacity: 1;
 }
-#card4{
-    background-image: url(../resources/img/fondos/eduardo-escobar-6ZV9Z4Z8ZL0-unsplash.jpg);
+
+.card:hover p {
+    opacity: 1;
 }
+
+#card1 {
+    background-image: url(../resources/img/fondos/cards/creative-looking-bike-montenegro.jpg);
+}
+
+#card2 {
+    background-image: url(../resources/img/fondos/cards/side-view-young-man-standing-with-his-bicycle-against-wall.jpg);
+}
+
+#card3 {
+    background-image: url(../resources/img/fondos/cards/close-up-bicycle-details-parts.jpg);
+}
+
+#card4 {
+    background-image: url(../resources/img/fondos/cards/kiwihug-iq1y1Is3VsA-unsplash.jpg);
+}
+
+
+
+
+
+
+
+
 
 
 /* CONTENEDOR-CUSTOM */
-.contenedor-custom{
+.contenedor-custom {
     grid-column: 1/4;
     grid-row: 5;
     background-image: url(../resources/img/fondos/orange-bici\ .jpg);
     background-size: cover;
     background-position: center;
+    text-align: start;
+    scroll-margin-top: 100px;
+}
+
+.contenedor-custom-in {
+    background-color: #F2809F;
+    width: 40%;
+    color: white;
+    margin: 0 10rem 0 auto;
+    width: 600px;
+    height: 800px;
+    overflow: hidden;
+    background-color: rgba(13, 124, 124, 0.5);
+    flex-direction: column;
+    justify-content: center;
+    font-family: monospace;
+
+}
+
+.contenedor-custom-in h2 {
+    font-family: 'Lavishly Yours';
+    font-size: 5rem;
+    font-weight: 500;
+}
+.contenedor-custom-in p {
+   font-size: 1rem; 
+   text-align: center;
+   margin: 0 1rem 1rem 1rem;
 }
 
 
+
 /* CONTENEDOR-OPINIONES */
-.contenedor-opiniones{
+.contenedor-opiniones {
     grid-column: 1/4;
     grid-row: 6;
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 1fr;
-    background-color: #e6e6e6;
+    background-color: #f4f4f4;
+    padding: 3rem 2rem;
+    justify-items: center;
+    scroll-margin-top: 200px;
 }
-.opiniones{
+
+.dots {
+    font-size: 2rem;
+    color: #6c757d;
     grid-column: 2/3;
+    justify-self: center;
+    margin-bottom: 2rem;
+}
+
+.opiniones {
+    grid-column: 1/4;
     grid-row: 1;
     text-align: start;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    transition: transform 0.3s ease-in-out;
 }
-.opiniones img{
-    width: 200px;
-    height: 190px;
-    border: 1px transparent;
+
+.opiniones:hover {
+    transform: scale(1.02);
+}
+
+.opiniones img {
+    width: 120px;
+    height: 120px;
+    border: 3px solid #fff;
     border-radius: 50%;
-    margin: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.opiniones p{
-    line-height: 2.2;
+.opiniones p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.8;
+    font-family: 'Arial', sans-serif;
+    flex-grow: 1;
+}
+
+.opiniones strong {
+    color: var(--secundario);
+    font-weight: bold;
 }
 
 
 
+
+
+
+
+/* FORMULARIO CONTACTO */
+.formulario-contacto {
+    grid-column: 2/3;
+    grid-row: 7;
+}
+
+.formulario-contacto-in{
+    padding: 2rem 20rem 2rem 20rem;
+    width: 100%;
+    max-width: 100%;
+    margin: 2rem auto;
+}
+.formulario-contacto-in h3 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 5rem;
+    font-family: 'Lavishly Yours';;
+    color: var(--secundario);
+}
+
+.formulario-contacto-in form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.formulario-contacto-in input,
+.formulario-contacto-in textarea{
+    width: 600px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    resize: none;
+}
+
+.formulario-contacto-in button {
+    padding: 0.8rem 4rem;
+    border-radius: 5px;
+    border: 1px solid grey;
+    color: var(--blanco);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.formulario-contacto-in button:hover {
+    color: var(--negro);
+}
 
 /* FIN CONTENT */
-
-
-
-
 
 
 
@@ -354,17 +645,20 @@ footer {
     gap: 20px;
     padding: 0 20px;
 }
-.footer-seccion{
+
+.footer-seccion {
     flex-direction: column;
     text-align: center;
 }
+
 /* Secciones dentro del footer */
 .footer-seccion h3 {
     font-size: 1rem;
     margin-bottom: 10px;
 }
 
-.footer-seccion p, .footer-seccion ul {
+.footer-seccion p,
+.footer-seccion ul {
     font-size: 0.8rem;
     line-height: 1.5;
 }
@@ -397,4 +691,5 @@ footer {
     background-color: var(--pie);
     padding: 10px 0;
 }
+
 
